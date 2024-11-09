@@ -1,0 +1,20 @@
+body {
+    background-image: linear-gradient(rgb(218, 167, 167), rgb(205, 125, 170));
+    background-size: cover;
+    color: rgb(124, 54, 92);
+}
+
+#credit-score {
+    background-color: rgb(255, 225, 216);
+    height: 100px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: rgb(124, 54, 92);
+    border-radius: 10px;
+    box-shadow: 4px 7px;
+    transition: all 0.5s ease;
+}
+
+#credit-score:hover {
+    background-color: rgb(255, 244, 241);
+}
