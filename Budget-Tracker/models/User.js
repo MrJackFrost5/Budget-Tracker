@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     creation_date: { type: Date, required: true },
     last_logged_in: { type: Date, required: true },
     has_access: { type: Boolean, required: true }, 
-    plaid_access_token: { type: String, required: true }
+    credit_score: { type: Number, required: true }
 });
 
 const User = mongoose.model('User', userSchema);

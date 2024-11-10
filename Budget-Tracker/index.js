@@ -25,10 +25,19 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html'); // Serve the main HTML file
 });
 
+app.get('/signup', (req, res) => {
+    res.sendFile(__dirname + '/public/signup.html'); // Serve the sign up page
+});
+
+// Testing below
+app.get('/test', (req, res) => {
+    res.sendFile(__dirname + '/public/testing.html'); // Serve the stupid testing page
+});
+
 // Create new user
-app.post('/users2', async (req, res) => {
-    const { username, firstname, lastname, password, email, creation_date, last_logged_in, has_access, plaid_access_token } = req.body;
-    const user = new User({ username, firstname, lastname, password, email, creation_date, last_logged_in, has_access, plaid_access_token });
+app.post('/create_account', async (req, res) => {
+    const { username, firstname, lastname, password, email, creation_date, last_logged_in, has_access, credit_score } = req.body;
+    const user = new User({ username, firstname, lastname, password, email, creation_date, last_logged_in, has_access, credit_score });
 
     try {
         await user.save();
@@ -39,6 +48,12 @@ app.post('/users2', async (req, res) => {
 });
 
 // Get all users
+// remove this later so u dont dox all the users
+
+// also dont store the passwords in plaintext!!@#!#$!#%@$!!!!!!!
+// use bcrypt or smth
+// and use .gitignore on api keys and stuff
+
 app.get('/users', async (req, res) => {
     try {
         const users = await User.find(); // Retrieve all users from the database
