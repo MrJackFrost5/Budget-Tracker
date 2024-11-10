@@ -1,24 +1,243 @@
+/* General body and typography styles */
 body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
     background-image: linear-gradient(rgb(218, 167, 167), rgb(205, 125, 170));
-    background-size: cover;
     color: rgb(124, 54, 92);
 }
 
-#credit-score {
-    background-color: rgb(255, 225, 216);
-    height: 100px;
-    border-width: 3px;
-    border-style: solid;
-    border-color: rgb(124, 54, 92);
+/* Unified section and header styling */
+h1, h2, h3, h4, header, section {
+    color: #333;
+    background: rgb(255, 225, 216);
+    padding: 20px;
+    margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 4px 7px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Navigation and hamburger menu styles */
+.p-menu1, .menu1, .link1 {
+    background-color: rgb(124, 54, 92);
+}
+
+a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .p-menu1{
+    height: 100%;
+    background-color: rgb(255, 225, 216);
+  }
+  
+  
+  
+  
+  /* Hamburger */
+  .hamburger1 {
+    height: 45px;
+    margin: 10px;
+    display: -ms-grid;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: left;
+    z-index: 120;
+  }
+  
+  .hamburger1 div {
+    background-color: rgb(61, 61, 61);
+    position: relative;
+    width: 40px;
+    height: 5px;
+    margin-top: 7px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  #toggle1 {
+    display: none;
+  }
+  
+  #toggle1:checked + .hamburger1 .top {
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+    margin-top: 22.5px;
+  }
+  
+  #toggle1:checked + .hamburger1 .meat {
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+    margin-top: -5px;
+  }
+  
+  #toggle1:checked + .hamburger1 .bottom {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  
+  #toggle1:checked ~ .menu1 {
+    height: 400px;
+  }
+
+/* Credit score and dashboard styling */
+#credit-score, #dashboard, form {
+    background-color: rgb(255, 225, 216);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
     transition: all 0.5s ease;
 }
 
-#credit-score:hover {
-    background-color: rgb(255, 244, 241);
+/* Credit score slider styling for seamless integration */
+#credit-score-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(to right, red 0%, yellow 50%, green 100%);
+    border-radius: 5px;
+    outline: none;
 }
 
-/* Sign Up Page */
+#credit-score-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 0px;
+}
 
+#credit-score-slider::-moz-range-thumb {
+    width: 0px;
+}
 
+/* Simplified Sign Up box for the top right */
+#sign-up-box {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 225, 216, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+#score-container {
+    width: 100%;
+    height: 20px;
+    position: relative;
+    background: linear-gradient(to right, red 0%, yellow 50%, green 100%);
+}
+
+#score-indicator {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    background: black;
+    width: 2px;
+}
+
+/* Inputs and buttons unified styling */
+input[type="number"], input[type="text"], select, button {
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+}
+
+button {
+    background-color: #ce50ea;
+    color: white;
+    border: none;
+}
+
+button:hover {
+    background-color: #a152f6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body, header, section {
+        padding: 10px;
+    }
+}
+
+/* Navbar Menu */
+.menu1 {
+    width: 100%;
+    background-color: rgb(124, 54, 92);
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr repeat(4, 0.5fr);
+    grid-row-gap: 25px;
+    padding: 0;
+    list-style: none;
+    border-radius: 15px;
+    clear: both;
+    width: auto;
+    text-align: center;
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s ease;
+    z-index: 120;
+    transition: all 0.3s ease;
+  }
+  
+  .menu1 a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 15px 0;
+    transition: all 0.3s ease;
+  }
+  
+  .menu1 a:first-child {
+    margin-top: 20px;
+  }
+  
+  .menu1 a:last-child {
+    margin-bottom: 40px;
+  }
+  
+  /* Navbar Links */
+  .link1 {
+    width: 100%;
+    margin: 0;
+    padding: 15px 0;
+    font: 700 20px 'Oswald', sans-serif;
+    letter-spacing: 1px;
+    color: #fff;
+    transition: all 0.4s ease;
+  }
+  
+  /* Hover Effects */
+  .link1:hover {
+    background-color: #fff;
+    color: rgb(124, 54, 92);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+  
+  /* Menu Animation */
+  .menu1.active {
+    height: auto;
+    transition: height 0.4s ease;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .menu1 {
+      grid-template-rows: 1fr repeat(4, 1fr);
+      grid-row-gap: 15px;
+    }
+  
+    .link1 {
+      font-size: 18px;
+    }
+  }
+  

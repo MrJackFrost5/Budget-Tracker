@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Form</title>
+  <link rel="stylesheet" href="signup.css">
+</head>
+<body class="p-2">
+  <section class="p-menu1">
+    <nav id="navbar" class="navigation" role="navigation">
+      <input id="toggle1" type="checkbox" />
+      <label class="hamburger1" for="toggle1">
+        <div class="top"></div>
+        <div class="meat"></div>
+        <div class="bottom"></div>
+      </label>
+    
+      <nav class="menu1">
+        <a class="link1" href="index.html">Home</a>
+        <a class="link1" href="">Summary</a>
+        <a class="link1" href="settings.html">Manage Expenses</a>
+        <a class="link1" href="#goals">Financial Goals</a>
+        <a class="link1" href="signup.html">Sign Up</a>
+      </nav>
+    </nav>
+  </section>
+
+  <div class="signup-container">
+    <div class="login-card">
+      <div class="card_title">
+        <h1>Sign In</h1>
+        <span>Do not have an account? <a href="signup.html">Sign Up</a></span>
+      </div>
+      <div class="form">
+        <input type="email" name="email" placeholder="Email" id="email" />
+        <input type="password" name="password" placeholder="Password" id="password" />
+        <button id="submit-btn">Sign In</button>
+      </div>
+      <div class="card_terms">
+        <input type="checkbox" name="" id="terms"> <span>Remember Me</a></span>
+      </div>
+    </div>
+  </div>
+  <script src="script2.js"></script>
+  <script>
+    document.querySelector('#submit-btn').addEventListener('click', async (event) => {
+  
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+  
+        // Send login request to the backend
+        try {
+            const response = await fetch("http://localhost:3000/login", {
+                method: 'POST',
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
+  
+            if (response.ok) {
+                const data = await response.json();
+                console.log("Login successful:", data.message);
+                window.location.href = "index.html"; // Redirect to main page
+            } else {
+                console.error("Login failed");
+            }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    });
+  </script>  
+</body>
+</html>

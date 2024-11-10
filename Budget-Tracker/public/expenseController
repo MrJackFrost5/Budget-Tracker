@@ -1,0 +1,56 @@
+// controllers/expenseController.js
+const creditScoreUtils = require('./credit.js');
+const Expense = require('./expense.js'); // Assuming you have an Expense model
+
+// Function to handle expense submission
+async function handleExpenseSubmission(req, res) {
+    try {
+        const userId = req.user.id; // Assuming user ID is available in the request
+        const expenseData = req.body; // Expense data sent from the front end
+
+        // Fetch user's current credit score from the database
+        let user = await User.findById(userId);
+        let currentCreditScore = user.creditScore || 50; // Default to 50 if not set
+
+        // Get the goal amount for this expense category
+        let goalAmount = getUserGoalAmountForExpense(user, expenseData.expenseCategory);
+
+        // Actual expense entered by the user
+        let actualExpense = expenseData.amountSpent;
+
+        // Calculate the new credit score
+        let updatedCreditScore = creditScoreUtils.updateCreditScore(currentCreditScore, goalAmount, actualExpense);
+
+        // Update the user's credit score in the database
+        user.creditScore = updatedCreditScore;
+        await user.save();
+
+        // Save the expense
+        const expense = new Expense({
+            user: userId,
+            category: expenseData.expenseCategory,
+            amount: actualExpense,
+            date: new Date()
+        });
+        await expense.save();
+
+        res.status(200).json({
+            message: 'Expense submitted and credit score updated.',
+            creditScore: updatedCreditScore
+        });
+    } catch (error) {
+        console.error('Error handling expense submission:', error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+// Helper function to get the user's goal amount for a specific expense category
+function getUserGoalAmountForExpense(user, expenseCategory) {
+    // Assuming user has a goals object with categories as keys
+    // Example: user.goals = { groceries: 100, utilities: 150, ... }
+    return user.goals[expenseCategory] || 0; // Default to 0 if not set
+}
+
+module.exports = {
+    handleExpenseSubmission
+};

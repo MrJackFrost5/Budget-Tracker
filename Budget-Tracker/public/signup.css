@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.signup-container {
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-image: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    rgba(253, 101, 133, 1) 0%,
+    rgba(255, 211, 165, 1) 90%
+  );
+}
+
+.card {
+  border-radius: 10px;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.3);
+  width: 400px;
+  height: 450px;
+  background-color: #ffffff;
+  padding: 10px 30px;
+}
+
+.card_title {
+  text-align: center;
+  padding: 10px;
+}
+
+.card_title h1 {
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.form input {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #e2e2e2;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+
+.form button {
+  background-color: #4796ff;
+  color: #ffffff;
+  font-size: 16px;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  padding: 8px 15px;
+  width: 100%;
+}
+
+.card_terms {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.card_terms input[type="checkbox"] {
+  background-color: #e2e2e2;
+}
+
+.card_terms span {
+  margin: 5px;
+  font-size: 13px;
+}
+
+.card a {
+  color: #4796ff;
+  text-decoration: none;
+}
+
+
+/* Navigation and hamburger menu styles */
+.p-menu1, .menu1, .link1 {
+  background-color: rgb(124, 54, 92);
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.p-menu1{
+  height: 100%;
+  background-color: rgb(255, 225, 216);
+}
+
+
+
+
+/* Hamburger */
+.hamburger1 {
+  height: 45px;
+  margin: 10px;
+  display: -ms-grid;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  justify-items: left;
+  z-index: 120;
+}
+
+.hamburger1 div {
+  background-color: rgb(61, 61, 61);
+  position: relative;
+  width: 40px;
+  height: 5px;
+  margin-top: 7px;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+}
+
+#toggle1 {
+  display: none;
+}
+
+#toggle1:checked + .hamburger1 .top {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+  margin-top: 22.5px;
+}
+
+#toggle1:checked + .hamburger1 .meat {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  margin-top: -5px;
+}
+
+#toggle1:checked + .hamburger1 .bottom {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+#toggle1:checked ~ .menu1 {
+  height: 400px;
+}
+
+.p-menu1, .menu1, .link1 {
+  background-color: rgb(124, 54, 92);
+}
+
+.p-menu1{
+  height: 100%;
+  background-color: rgb(255, 225, 216);
+}
+
+
+/* Inputs and buttons unified styling */
+input[type="number"], input[type="text"], select, button {
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+}
+
+button {
+  background-color: #5c67f2;
+  color: white;
+  border: none;
+}
+
+button:hover {
+  background-color: #4a50e0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body, header, section {
+      padding: 10px;
+  }
+}
+
+/* Navbar Menu */
+.menu1 {
+  width: 100%;
+  background-color: rgb(124, 54, 92);
+  margin: 0;
+  display: grid;
+  grid-template-rows: 1fr repeat(4, 0.5fr);
+  grid-row-gap: 25px;
+  padding: 0;
+  list-style: none;
+  border-radius: 15px;
+  clear: both;
+  width: auto;
+  text-align: center;
+  height: 0;
+  overflow: hidden;
+  transition: height 0.4s ease;
+  z-index: 120;
+  transition: all 0.3s ease;
+}
+
+.menu1 a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  padding: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.menu1 a:first-child {
+  margin-top: 20px;
+}
+
+.menu1 a:last-child {
+  margin-bottom: 40px;
+}
+
+/* Navbar Links */
+.link1 {
+  width: 100%;
+  margin: 0;
+  padding: 15px 0;
+  font: 700 20px 'Oswald', sans-serif;
+  letter-spacing: 1px;
+  color: #fff;
+  transition: all 0.4s ease;
+}
+
+/* Hover Effects */
+.link1:hover {
+  background-color: #fff;
+  color: rgb(124, 54, 92);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+}
+
+/* Menu Animation */
+.menu1.active {
+  height: auto;
+  transition: height 0.4s ease;
+}
+
+
+@media (max-width: 768px) {
+  .menu1 {
+    grid-template-rows: 1fr repeat(4, 1fr);
+    grid-row-gap: 15px;
+  }
+
+  .link1 {
+    font-size: 18px;
+  }
+}
